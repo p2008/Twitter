@@ -1,3 +1,8 @@
+> Configuration of pycharm
+    > server environment variables
+        DJANGO_SETTINGS_MODULE
+        coderslab.settings
+
 > User Stories
     Chcę wejść na główną stronę i zobaczę listę tweetów
 
