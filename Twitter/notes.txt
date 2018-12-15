@@ -1,0 +1,31 @@
+> User Stories
+    Chcę wejść na główną stronę i zobaczę listę tweetów
+
+    Chcę wejść na stronę główną i zobaczę formularz do tworzenia nowego wpisu nad listą tweetów
+    Chcę wejść na logowanie i zobaczę formularz z polami na email i hasło
+    Chcę po logowaniu być przekierowany na stronę główną lub mieć informację o błędnych danych
+    Chcę móc być przekierowanym na stronę tworzenia użytkownika(rejestracji).
+        Po wypełnieniu pól (email i hasło) chcę mieć utworzone konto.
+        Jeżeli Ok być przekierowanym na str. główną
+        Jeżeli FAIL dostać komunikat.
+    stronę użytkonwnika(users detail page)
+        wszystkie moje wpisy(tweety)
+        z liczbą komentarzy dla każdego
+        guzik do tworzenia wpisu
+
+    strona wyswietlania postu
+        dane postu
+        komentarze
+        formularz do stworzenia postu
+
+    Strona edycji użytkownika
+        modyfikacja informacji - tabela Users
+        zmiana hasła
+
+    Strona z wiadomościami
+        lista moich wiadomości TODO: ?
+        Oznaczenie nieprzeczytanych wiadmości
+
+    Strona wiadomości
+        Dane pojedyńczej wiadomości
+
