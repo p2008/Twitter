@@ -1,0 +1,23 @@
+{% extends 'twitter_app/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+    {% if 'login' in request.path %}
+        <h1>Zaloguj się</h1>
+    {% elif 'create_user' in request.path %}
+        <h1>Nowy użytkowik</h1>
+    {% endif %}
+
+    <form id='slug' action="#" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <p><input type="submit" value="Add" /></p>
+    </form>
+
+    {% if 'login' in request.path %}
+        <p><a href="{% url 'create-user' %}">Stwórz konto</a></p>
+    {% endif %}
+{% endblock content %}
