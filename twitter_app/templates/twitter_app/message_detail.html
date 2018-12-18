@@ -1,0 +1,13 @@
+{% extends 'twitter_app/base.html' %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-head">
+            <p><span>{{ message.user_from }}</span></p>
+            <p><span>{{ message.user_to }}</span></p>
+            <div class="card-body">
+                <p><span>{{ message.content }}</span></p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

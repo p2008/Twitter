@@ -19,11 +19,11 @@ from twitter_app.views import *
 
 urlpatterns = [
     path('index/', AllTweetsView.as_view(), name='home-page'),
-    path('/', include('twitter_app.user_auth.urls')),
-    path('<int:uid>/posts/', UserPostsView.as_view(), name='user-posts'),
-    path('<int:pid>/', PostDetailView.as_view(), name='post-details'),
-    path('<int:uid>/edit/', UserEditView.as_view(), name='user-edit'),
-    path('<int:uid>/messages/', UserMessagesView.as_view(), name='user-messages'),
-    path('<int:mid>/', MessageDetailView.as_view(), name='message-details'),
+    path('', include('twitter_app.user_auth.urls')),
+    path('<int:uid>/tweets/', UserTweetsView.as_view(), name='user-tweets'),
+    path('<int:tid>/tweet_detail/', TweetDetailView.as_view(), name='tweet-details'),
+    path('user_edit/', UserEditView.as_view(), name='user-edit'),
+    path('messages/', UserMessagesView.as_view(), name='user-messages'),
+    path('<int:mid>/message_detail/', MessageDetailView.as_view(), name='message-detail'),
 
 ]

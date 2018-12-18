@@ -1,0 +1,37 @@
+{% for tweet in tweets %}
+    <div class="card">
+        <a href="{% url 'tweet-details' tweet.pk %}">
+            <div class="card-body">
+                {{ tweet.content }}
+            </div>
+        </a>
+        <div class="card-footer small">
+            <span>{{ tweet.creation_date }} |</span>
+            <span><a href="{% url 'user-tweets' tweet.author.pk %}">{{ tweet.author }}</a> |</span>
+            <span>{{ tweet.tweet_comments.all.count }} komentarze |</span>
+
+            <div id="accordion">
+                <div class="card">
+                    <a class="card-link" data-toggle="collapse" href="#collapse{{ tweet.pk }}">
+                        <div class="card-header">
+                            Komentarze
+                        </div>
+                    </a>
+                    <div id="collapse{{ tweet.pk }}" class="collapse" data-parent="#accordion">
+                        {% for comment in tweet.tweet_comments.all %}
+                            <div class="card-body">
+                                <span>{{ comment.content }}</span>
+                            </div>
+                            <div class="card-footer small">
+                                <span><a href="{% url 'user-tweets' comment.author.pk %}">{{ comment.author }} |</a></span>
+                                <span>{{ comment.created }}</span>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endfor %}
+

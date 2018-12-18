@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <div class="navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'home-page' %}">Tweets</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'user-tweets' user.pk %}">Moje Tweety</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{% url 'user-messages' %}">Wiadomości</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Moje konto
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{% url 'change' %}">Zmień hasło</a>
+                    <a class="dropdown-item" href="{% url 'user-edit' %}">Profil</a>
+                </div>
+            </li>
+        </ul>
+        {% if user.username %}
+            <span class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">
+                     Wyloguj {{ user.username }}</a>
+            </span>
+        {% endif %}
+    </div>
+</nav>

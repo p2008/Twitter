@@ -130,6 +130,6 @@ TEMPLATE_DIRS = (os.path.join(BASE_DIR, 'twitter_app/templates'),)
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'home-page'
-LOGIN_URL = '/'
+LOGIN_URL = '/twitter_app/login'
 
 LOGOUT_REDIRECT_URL = 'login'

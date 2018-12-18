@@ -16,7 +16,7 @@ class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE,
                                related_name='author_comments')
     tweet = models.ForeignKey(Tweet, on_delete=models.CASCADE,
-                              related_name='tweet_commments')
+                              related_name='tweet_comments')
     created = models.DateTimeField(auto_now_add=True)
 
 

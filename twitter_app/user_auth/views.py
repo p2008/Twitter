@@ -5,7 +5,7 @@ from django.contrib.auth.models import Permission, User
 from django.contrib.auth.views import logout_then_login
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views import View
 
 from user_auth.forms import CreateUserForm, ResetPasswordForm, LoginForm
@@ -47,25 +47,25 @@ class LoginUserView(View):
 
 class Password(View):
 
-    def get(self, request, uid):
+    def get(self, request):
         form = ResetPasswordForm
         return render(request, f'{APP_NAME}/add.html', locals())
 
-    def post(self, request, uid):
+    def post(self, request):
         form = ResetPasswordForm(request.POST)
         if form.is_valid():
             password1 = form.cleaned_data.get('password1')
             password2 = form.cleaned_data.get('password2')
 
             if password1 == password2:
-                user = get_object_or_404(User, id=uid)
+                user = get_object_or_404(User, id=request.user.pk)
                 user.set_password(password1)
                 user.save()
                 messages.success(request, 'Hasło zostało zmienione')
             else:
                 form.add_error('password1', 'Hasła nie są takie same')
 
-        return redirect(reverse('home-page'))
+        return redirect(reverse_lazy('home-page'))
 
 
 class ResetPasswordView(PermissionRequiredMixin, Password):

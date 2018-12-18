@@ -1,0 +1,20 @@
+{% extends 'twitter_app/base.html' %}
+
+{% load my_filters %}
+
+{% block content %}
+    {% for message in messages_all %}
+        <div class="card">
+            <a href="{% url 'message-detail' message.pk %}">
+                <div class="card-head {% if not message.read %}alert-warning{% endif %}">
+                    <span>from: {{ message.user_from }}&nbsp;&nbsp;&nbsp;</span>
+                    <span>to: {{ message.user_to }}</span>
+                </div>
+            </a>
+            <div class="card-foot">
+                {{ message.content|max_30_chars }}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock content %}

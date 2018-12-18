@@ -1,11 +1,11 @@
 {% extends 'twitter_app/base.html' %}
 
 {% block content %}
-    <div>
-        {% for object in object_list %}
-            <p>{{ object.content }}</p>
-            <p>{{ object.creation_date }}</p>
-            <p>{{ object.author }}</p>
-        {% endfor %}
-    </div>
+    {% if 'index' in request.path or 'tweet_detail' in request.path or tweets.0.author != request.user %}
+        {% include 'twitter_app/add.html' %}
+    {% endif %}
+
+    {% if 'user' not in request.path %}
+        {% include 'twitter_app/tweets.html' %}
+    {% endif %}
 {% endblock content %}

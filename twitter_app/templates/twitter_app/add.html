@@ -1,9 +1,5 @@
-{% extends 'twitter_app/base.html' %}
-
 {% load crispy_forms_tags %}
 
-
-{% block content %}
 
     {% if 'login' in request.path %}
         <h1>Zaloguj się</h1>
@@ -11,13 +7,17 @@
         <h1>Nowy użytkowik</h1>
     {% endif %}
 
-    <form id='slug' action="#" method="post">
+    <form action="#" method="post">
         {% csrf_token %}
-        {{ form|crispy }}
-        <p><input type="submit" value="Add" /></p>
+        {% if 'user_edit' not in request.path %}
+            {{ form|crispy }}
+        {% else %}
+            {{ form.first_name |as_crispy_field }}
+            {{ form.last_name |as_crispy_field }}
+        {% endif %}
+        <p><input type="submit" value="Wyślij" /></p>
     </form>
 
     {% if 'login' in request.path %}
         <p><a href="{% url 'create-user' %}">Stwórz konto</a></p>
     {% endif %}
-{% endblock content %}
